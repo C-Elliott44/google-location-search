@@ -7,6 +7,6 @@ const APIKEY = "&key=AIzaSyB7GENwxN3TLBacFr5cROtwHlOHTpw2Zs0";
 // Export an object with a "search" method that searches the Giphy API for the passed query
 export default {
   search: function(query) {
-    return axios.get(BASEURL + "1818+pembridge+street+petaluma" + FIELDS + APIKEY);
+    return axios.get(BASEURL + query + FIELDS + APIKEY);
   }
 };

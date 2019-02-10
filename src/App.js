@@ -29,7 +29,8 @@ class LocationSearchInput extends React.Component {
       .then(results => getLatLng(results[0]))
       .then(latLng => console.log('Success', latLng, this.state.address))
       .then(this.state.address = query => {
-        API.search(query)
+        console.log(query);
+        API.search("1818+pembridge+street+petaluma+ca")
           .then(res => console.log(res))
           .catch(err => console.log(err));
       })
