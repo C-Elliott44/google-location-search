@@ -28,13 +28,12 @@ class LocationSearchInput extends React.Component {
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
       .then(latLng => console.log('Success', latLng, this.state.address))
-      .then(this.state.address = query => {
-        console.log(query);
-        API.search("1818+pembridge+street+petaluma+ca")
+      .then( () => {
+        API.search(this.state.address)
           .then(res => console.log(res))
           .catch(err => console.log(err));
       })
-      .catch(error => console.error('Error', error));
+      .catch(error => console.error('Ok Error', error));
   };
  
   render() {
