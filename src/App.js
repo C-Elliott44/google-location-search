@@ -28,11 +28,11 @@ class LocationSearchInput extends React.Component {
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
       .then(latLng => console.log('Success', latLng, this.state.address))
-      /*.then(this.state.address = query => {
+      .then(this.state.address = query => {
         API.search(query)
           .then(res => console.log(res))
           .catch(err => console.log(err));
-      })*/
+      })
       .catch(error => console.error('Error', error));
   };
  
