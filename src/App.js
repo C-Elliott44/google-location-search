@@ -10,7 +10,8 @@ import API from "./utils/API";
 class LocationSearchInput extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { address: '' };
+    this.state = {address: '',
+                  place_id: ''};
   }
  
   handleChange = address => {
@@ -22,17 +23,22 @@ class LocationSearchInput extends React.Component {
       .then(res => console.log(res))
       .catch(err => console.log(err));
   };
- 
+
+  searchPlaceId = () => {
+    API.search(this.state.address)
+      .then(res => {
+        this.setState({ place_id: res.data.candidates[0].place_id})
+        console.log("The State DATA " + this.state.place_id)
+      })
+      .catch(err => console.log(err));
+  }
+
   handleSelect = address => {
     this.setState({ address });
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
       .then(latLng => console.log('Success', latLng, this.state.address))
-      .then( () => {
-        API.search(this.state.address)
-          .then(res => console.log(res))
-          .catch(err => console.log(err));
-      })
+      .then(this.searchPlaceId)
       .catch(error => console.error('Ok Error', error));
   };
  
@@ -42,6 +48,7 @@ class LocationSearchInput extends React.Component {
         value={this.state.address}
         onChange={this.handleChange}
         onSelect={this.handleSelect}
+        searchPlaceId={this.searchPlaceId}
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <div>
