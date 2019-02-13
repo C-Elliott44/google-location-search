@@ -5,30 +5,42 @@ import {
   geocodeByAddress,
   getLatLng,
 } from 'react-places-autocomplete';
-import API from "./utils/API";
+import IdAPI from "./utils/PlaceIdAPI";
+import DetailsAPI from "./utils/PlaceDetailsAPI"
 
 class LocationSearchInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {address: '',
-                  place_id: ''};
-  }
+                  place_id: '',
+                  details: ''
+                };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.searchPlaceDetails = this.searchPlaceDetails.bind(this);
+    this.searchPlaceId = this.searchPlaceId.bind(this);
+    this.handleSelect = this.handleSelect.bind(this);
+  };
  
   handleChange = address => {
     this.setState({ address });
   };
 
-  searchAddress = query => {
-    API.search(query)
-      .then(res => console.log(res))
+  searchPlaceDetails = () => {
+    DetailsAPI.search(this.state.place_id)
+      .then(res => {
+        this.setState({ details: res.data.result})
+        console.log("The api DATA ", res)
+        console.log("The State DATA ", this.state.details)
+      })
       .catch(err => console.log(err));
-  };
+  }
 
   searchPlaceId = () => {
-    API.search(this.state.address)
+    IdAPI.search(this.state.address)
       .then(res => {
         this.setState({ place_id: res.data.candidates[0].place_id})
-        console.log("The State DATA " + this.state.place_id)
+        this.searchPlaceDetails()
       })
       .catch(err => console.log(err));
   }
@@ -49,6 +61,7 @@ class LocationSearchInput extends React.Component {
         onChange={this.handleChange}
         onSelect={this.handleSelect}
         searchPlaceId={this.searchPlaceId}
+        searchPlaceDetails={this.search}
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <div>
