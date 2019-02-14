@@ -18,7 +18,7 @@ class SimpleMap extends Component {
           <AnyReactComponent
             lat={this.props.center.lat}
             lng={this.props.center.lng}
-            text={'Kreyser Avrora'}
+            text={''}
           />
         </GoogleMapReact>
       </div>
