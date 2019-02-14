@@ -7,13 +7,23 @@ import {
 } from 'react-places-autocomplete';
 import IdAPI from "./utils/PlaceIdAPI";
 import DetailsAPI from "./utils/PlaceDetailsAPI"
+import SimpleMap from "./components/map"
+import InfoBox from "./components/InfoBox"
+
+
+
 
 class LocationSearchInput extends React.Component {
   constructor(props) {
     super(props);
     this.state = {address: '',
                   place_id: '',
-                  details: ''
+                  details: '',
+                  zoom: 12,
+                  center: {
+                    lat: 32.6858853,
+                    lng: -117.18308910000002
+                  }
                 };
 
     this.handleChange = this.handleChange.bind(this);
@@ -49,7 +59,10 @@ class LocationSearchInput extends React.Component {
     this.setState({ address });
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
-      .then(latLng => console.log('Success', latLng, this.state.address))
+      .then(latLng => {
+        console.log('Success', latLng.lat, this.state.address)
+        this.setState({center: latLng})
+    })
       .then(this.searchPlaceId)
       .catch(error => console.error('Ok Error', error));
   };
@@ -93,6 +106,13 @@ class LocationSearchInput extends React.Component {
                 );
               })}
             </div>
+            <SimpleMap 
+              center = {this.state.center}
+              zoom = {this.state.zoom}
+            />
+            <InfoBox
+              details = {this.state.details}
+            />
           </div>
         )}
       </PlacesAutocomplete>
