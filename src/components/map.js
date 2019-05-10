@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
- 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+import Pointer from './MapComponents/pointer.png';
+import "../Styles/map.css";
+
+const AnyReactComponent = ({ text }) => <div className="MapPointer"><img className='PointerImg' src={Pointer} alt="Map Pointer"></img></div>;
 
 
  
@@ -9,7 +11,7 @@ class SimpleMap extends Component {
  
   render() {
     return (
-      <div style={{ height: '80vh', width: '80%' }}>
+      <div className='MapView'>
         <GoogleMapReact
           bootstrapURLKeys={{ key: "AIzaSyD0fgzm00Nx4vGdj6EqJTA8oGBgOQkKj60" }}
           center={this.props.center}

@@ -77,9 +77,12 @@ class LocationSearchInput extends React.Component {
         searchPlaceDetails={this.search}
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-          <div>
-            <p>Please Type In A Location</p>
-            <input
+          <div className='TheContainer'>
+            <header className='header'>
+              <h1 className="MainTitle">Google JSON Data Finder</h1>
+              <p>See what Google knows about your favorite locations!</p>
+            </header>
+            <input 
               {...getInputProps({
                 placeholder: 'Search Places ...',
                 className: 'location-search-input',
@@ -110,6 +113,9 @@ class LocationSearchInput extends React.Component {
               center = {this.state.center}
               zoom = {this.state.zoom}
             />
+            <div className="InfoTitle">
+              <h2>Google's API Data</h2>
+            </div>
             <InfoBox
               details = {this.state.details}
             />

@@ -1,3 +1,55 @@
+html, body {
+  height: 100vh;
+  width: 100vw;
+}
+
+h1, h2, p {
+  margin: 0;
+  padding: 0;
+}
+
 .App {
   text-align: center;
+}
+
+.TheContainer {
+  height: 100vh;
+  width:100vw;
+  display: grid;
+  grid-template-rows: 75px 35px 90px 40px 1fr;
+  grid-template-columns: 70% 30%;
+  align-items: center;
+  justify-items: center;
+}
+
+.header {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+input {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.autocomplete-dropdown-container{
+  grid-row-start: 3;
+  grid-row-end: 4;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.InfoTitle {
+  grid-row-start: 4;
+  grid-row-end: 5;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  align-self: stretch;  
+  height: 100%;
+  width: 100%;
+  background-color: blue;
 }

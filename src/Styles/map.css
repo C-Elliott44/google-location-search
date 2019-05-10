@@ -1,3 +1,21 @@
-#map {
-    height: 50hv;
-  }
+.MapView{
+  grid-row-start: 4;
+  grid-row-end: 6;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  justify-self: stretch;
+  width: 100%;
+  height: 100%;
+}
+
+  .MapPointer {
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    right: 18px;
+    bottom: 36px;
+}
+
+.PointerImg {
+  width: 36px;
+}

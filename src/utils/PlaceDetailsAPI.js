@@ -6,7 +6,7 @@ const APIKEY = "&key=AIzaSyD0fgzm00Nx4vGdj6EqJTA8oGBgOQkKj60";
 
 export default {
   search: function(query) {
-    console.log("in the API" + query );
+    console.log("in the API " + query );
     return axios.get(`${'https://cors-anywhere.herokuapp.com/'}` + BASEURL + query + FIELDS + APIKEY);
   }
 };
