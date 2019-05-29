@@ -1,11 +1,20 @@
 html, body {
   height: 100vh;
   width: 100vw;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background-image: url("./photos/Background.jpeg");
+  background-size: cover;
+  background-position: left;
 }
 
 h1, h2, p {
+  display: block;
   margin: 0;
   padding: 0;
+  font-weight: initial;
 }
 
 .App {
@@ -16,40 +25,53 @@ h1, h2, p {
   height: 100vh;
   width:100vw;
   display: grid;
-  grid-template-rows: 75px 35px 90px 40px 1fr;
-  grid-template-columns: 70% 30%;
-  align-items: center;
-  justify-items: center;
+  grid-template-rows: 100px 35px 1fr 35px;
+  grid-template-columns: 55px 1fr 1fr 250px 55px;
 }
 
 .header {
-  grid-row-start: 1;
-  grid-row-end: 2;
-  grid-column-start: 1;
-  grid-column-end: 3;
+  grid-row: 1 / span 1;
+  grid-column: 1 / span 5;
+  background-color: rgba(255, 255, 255, .55);
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 55px 1fr 1fr 250px 55px;
+  align-items: center;
+}
+
+.MainTitle {
+  grid-row: 1 / span 1;
+  grid-column: 2 / span 2;
+}
+
+.SubTitle {
+  font-size: 12px;
+}
+
+.GoogleFont {
+  color: rgba(51, 51, 51, 1);
+}
+
+.SearchFeild {
+  grid-row: 1 / span 1;
+  grid-column: 4 / span 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 30px 1fr;
+}
+
+.InputBox {
+  grid-row: 2 / span 1;
 }
 
 input {
-  grid-row-start: 2;
-  grid-row-end: 3;
-  grid-column-start: 1;
-  grid-column-end: 3;
+  height: 30px;
+  width: 235px;
 }
 
 .autocomplete-dropdown-container{
-  grid-row-start: 3;
-  grid-row-end: 4;
-  grid-column-start: 1;
-  grid-column-end: 3;
+  grid-row: 4 / span 1;
+  width: 235px;
 }
 
-.InfoTitle {
-  grid-row-start: 4;
-  grid-row-end: 5;
-  grid-column-start: 2;
-  grid-column-end: 3;
-  align-self: stretch;  
-  height: 100%;
-  width: 100%;
-  background-color: blue;
-}
+

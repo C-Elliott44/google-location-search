@@ -79,43 +79,46 @@ class LocationSearchInput extends React.Component {
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <div className='TheContainer'>
             <header className='header'>
-              <h1 className="MainTitle">Google JSON Data Finder</h1>
-              <p>See what Google knows about your favorite locations!</p>
-            </header>
-            <input 
-              {...getInputProps({
-                placeholder: 'Search Places ...',
-                className: 'location-search-input',
-              })}
-            />
-            <div className="autocomplete-dropdown-container">
-              {loading && <div>Loading...</div>}
-              {suggestions.map(suggestion => {
-                const className = suggestion.active
-                  ? 'suggestion-item--active'
-                  : 'suggestion-item';
-                const style = suggestion.active
-                  ? { backgroundColor: '#fafafa', cursor: 'pointer' }
-                  : { backgroundColor: '#ffffff', cursor: 'pointer' };
-                return (
-                  <div
-                    {...getSuggestionItemProps(suggestion, {
-                      className,
-                      style,
+              <div className="MainTitle">
+                <h1><span className="GoogleFont">Google </span><span>JSON Data Finder</span></h1>
+                <p className="SubTitle">See what Google knows about your favorite locations!</p>
+              </div>
+              <div className="SearchFeild">
+                <div className="InputBox">
+                  <input 
+                    {...getInputProps({
+                      placeholder: 'Search Places ...',
+                      className: 'location-search-input',
                     })}
-                  >
-                    <span>{suggestion.description}</span>
-                  </div>
-                );
-              })}
-            </div>
+                  />
+                </div>
+                <div className="autocomplete-dropdown-container">
+                  {loading && <div>Loading...</div>}
+                  {suggestions.map(suggestion => {
+                    const className = suggestion.active
+                      ? 'suggestion-item--active'
+                      : 'suggestion-item';
+                    const style = suggestion.active
+                      ? { backgroundColor: '#fafafa', cursor: 'pointer' }
+                      : { backgroundColor: '#ffffff', cursor: 'pointer' };
+                    return (
+                      <div
+                        {...getSuggestionItemProps(suggestion, {
+                          className,
+                          style,
+                        })}
+                      >
+                        <span>{suggestion.description}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </header>
             <SimpleMap 
               center = {this.state.center}
               zoom = {this.state.zoom}
             />
-            <div className="InfoTitle">
-              <h2>Google's API Data</h2>
-            </div>
             <InfoBox
               details = {this.state.details}
             />

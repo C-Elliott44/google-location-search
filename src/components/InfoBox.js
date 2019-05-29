@@ -17,9 +17,14 @@ class InfoBox extends Component {
   render() {
     return (
       <div className='InfoBox'>
-        <InfoCard
-            details={this.props.details}
-        />
+        <div className="InfoTitle">
+          <h2>API Data</h2>
+        </div>
+        <div className="InfoData">
+          <InfoCard
+              details={this.props.details}
+          />
+        </div>
       </div>
     );
   }
