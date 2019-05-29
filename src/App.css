@@ -34,7 +34,7 @@ h1, h2, p {
   grid-column: 1 / span 5;
   background-color: rgba(255, 255, 255, .55);
   display: grid;
-  grid-template-rows: 1fr;
+  grid-template-rows: 100px;
   grid-template-columns: 55px 1fr 1fr 250px 55px;
   align-items: center;
 }
@@ -65,13 +65,14 @@ h1, h2, p {
 }
 
 input {
-  height: 30px;
+  height: 25px;
   width: 235px;
 }
 
 .autocomplete-dropdown-container{
-  grid-row: 4 / span 1;
-  width: 235px;
+  grid-row: 3 / span 1;
+  width: 240px;
+  z-index: 2;
 }
 
 
